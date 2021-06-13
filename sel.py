@@ -1,5 +1,6 @@
 from time import sleep
-from time import sleep
+from datetime import datetime
+from datetime import timedelta
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -14,12 +15,18 @@ url = "https://cup.apss.tn.it/webportal/vaccinocovid/welcome"
 driver = webdriver.Firefox()
 driver.implicitly_wait(5)
 
-
 #### Wait the right time ####
+
+target = datetime(2021,6,14,23,0,0,100*1000) ## 100 millisecond after the opening, just in case
+
+now = datetime.now()
+delta = target - now
+if delta > timedelta(0):
+    print("going to sleep for %s" % delta)
+    sleep(delta.total_seconds())
 
 
 driver.get(url)
-
 ######## go to booking page ########
 driver.find_element_by_css_selector("div.widget:nth-child(1)").click()
 
