@@ -64,7 +64,7 @@ while True:
     cssel = "form.ng-dirty > div:nth-child(2) > div:nth-child(4) > div:nth-child(" + str(i) + ") > label:nth-child(1) > i:nth-child(1)"
     try: 
         driver.find_element_by_css_selector(cssel).click()
-        print(cssel)
+        # print(cssel)
     except: break
     i += 1
 
