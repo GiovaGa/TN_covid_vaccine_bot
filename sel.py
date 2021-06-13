@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support import expected_conditions as EC
 
 cod_fisc = "" # insert your codice fiscale
 num_tes = ""    # insert the number behind your tessera sanitaria 
@@ -73,4 +73,5 @@ while True:
 css_continue = ".wizard-body > team-card-login:nth-child(1) > div:nth-child(1) > ng-include:nth-child(2) > form:nth-child(1) > div:nth-child(3) > button:nth-child(2)"
 driver.find_element_by_css_selector(css_continue).click()
 
-## Mistero....
+## Login done
+## Now the user needs to manually choose the place and date of the vaccination
