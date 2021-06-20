@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.support import expected_conditions as EC
 
 cod_fisc = "" # insert your codice fiscale
-num_tes = ""    # insert the number behind your tessera sanitaria 
+num_tes = ""    # insert the number behind your tessera sanitaria
 
 url = "https://cup.apss.tn.it/webportal/vaccinocovid/welcome"
 
@@ -26,10 +26,12 @@ driver.implicitly_wait(5)
 
 #### Wait the right time ####
 
-wait(datetime(2021,6,14,23,0,0,100*10000)) ## 100 millisecond after the opening, just in case
-
-
 driver.get(url)
+
+while "Prenota Vaccino covid-19" == driver.title:
+    sleep(0.2)
+
+
 ######## go to booking page ########
 driver.find_element_by_css_selector("div.widget:nth-child(1)").click()
 
@@ -40,7 +42,7 @@ try:
     el_cf = driver.find_element_by_id('cf')
     el_cf.click()
     el_cf.send_keys(cod_fisc)
-    
+
     el_num = driver.find_element_by_id("ts")
     el_num.click()
     el_num.send_keys(num_tes)
@@ -64,7 +66,7 @@ except:
 i = 1
 while True:
     cssel = "form.ng-dirty > div:nth-child(2) > div:nth-child(4) > div:nth-child(" + str(i) + ") > label:nth-child(1) > i:nth-child(1)"
-    try: 
+    try:
         driver.find_element_by_css_selector(cssel).click()
         # print(cssel)
     except: break
