@@ -28,7 +28,7 @@ driver.implicitly_wait(5)
 
 driver.get(url)
 
-while "Prenota Vaccino covid-19" == driver.title:
+while "Prenota Vaccino covid-19" != driver.title:
     sleep(0.2)
 
 
